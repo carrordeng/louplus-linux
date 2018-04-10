@@ -12,7 +12,7 @@ do
     rep=$(iptables-save | grep $i)
     if [[ -z $rep ]];then
         /sbin/iptables -A INPUT -s $i -m limit --limit 5/m -j ACCEPT
-        echo "$i limit at `date`">/var/log/ddos-ip
+        echo "$i limit at `date`">>/var/log/ddos-ip
     fi
 done
 
