@@ -6,7 +6,7 @@ netstat -na | awk '/ESTABLISHED/{split($5,T,":"); print T[1]}' | sort | grep -v 
 
 for i in $(cat /var/log/rejectip)
 do
-    if [[ grep $1 /tmp/goodip ]];then
+    if [[ grep $i /tmp/goodip ]];then
 		continue
 	fi
     rep=$(iptables-save | grep $i)
