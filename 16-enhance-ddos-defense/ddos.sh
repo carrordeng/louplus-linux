@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "114.110.100.100" > /tmp/goodip
+# echo "114.110.100.100" > /tmp/goodip
 
 netstat -na | awk '/ESTABLISHED/{split($5,T,":"); print T[1]}' | sort | grep -v -E '192.168|127.0' | uniq -c | sort -rn | awk '{if ($2!=null && $1>21) {print $2}}' > /var/log/rejectip
 
